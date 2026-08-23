@@ -13,13 +13,16 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     
     public UserServiceImpl(UserRepository userRepository){
-    this.userRepository = userRepository;
+        this.userRepository = userRepository;
 }
 
     @Override
     public User registerUser(User user) {
 
         User existingUser = userRepository.findByEmail(user.getEmail());
+        if(existingUser != null){
+        throw new RuntimeException("Email already exists");
+        }
         return userRepository.save(user);
     }
 }

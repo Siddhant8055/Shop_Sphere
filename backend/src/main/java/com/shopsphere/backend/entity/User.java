@@ -40,8 +40,8 @@ public class User {
     @NotBlank(message = "Role is required")
     private String role;
 
-//    public String getEmail() {
-//        return email;
-//    }
+    public String getEmail() {
+        return email;
+    }
 
 }
