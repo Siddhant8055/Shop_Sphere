@@ -1,5 +1,7 @@
 package com.shopsphere.backend.service.impl;
 
+import com.shopsphere.backend.dto.UserRegistrationRequestDTO;
+import com.shopsphere.backend.dto.UserResponseDTO;
 import org.springframework.stereotype.Service;
 
 import com.shopsphere.backend.entity.User;
@@ -17,12 +19,19 @@ public class UserServiceImpl implements UserService {
 }
 
     @Override
-    public User registerUser(User user) {
-
-        User existingUser = userRepository.findByEmail(user.getEmail());
-        if(existingUser != null){
-        throw new RuntimeException("Email already exists");
-        }
-        return userRepository.save(user);
+    public UserResponseDTO registerUser(UserRegistrationRequestDTO dto) {
+        User user = new User();
+        user.setFirstName(dto.getFirstName());
+        return null;
     }
+
+//    @Override
+//    public User registerUser(User user) {
+//
+//        User existingUser = userRepository.findByEmail(user.getEmail());
+//        if(existingUser != null){
+//        throw new RuntimeException("Email already exists");
+//        }
+//        return userRepository.save(user);
+//    }
 }
