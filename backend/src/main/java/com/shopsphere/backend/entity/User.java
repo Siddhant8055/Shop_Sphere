@@ -10,8 +10,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
-
-import javax.annotation.processing.Generated;
 @Data // This is a lombok annotation that automatically generates the boilerplate code like getters and setters
 @Entity // This annotation used by hibernate to map the entity to the database table
 @Table(name = "users")

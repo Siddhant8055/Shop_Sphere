@@ -5,6 +5,6 @@ import com.shopsphere.backend.dto.UserResponseDTO;
 import com.shopsphere.backend.entity.User;
 
 public interface UserService {
-//    User registerUser(User user);
+    User registerUser(User user);
     UserResponseDTO registerUser(UserRegistrationRequestDTO dto);
 }

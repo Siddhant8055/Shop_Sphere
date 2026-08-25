@@ -22,16 +22,20 @@ public class UserServiceImpl implements UserService {
     public UserResponseDTO registerUser(UserRegistrationRequestDTO dto) {
         User user = new User();
         user.setFirstName(dto.getFirstName());
+        user.setLastName(dto.getLastName());
+        user.setEmail(dto.getEmail());
+        user.setPhoneNumber(dto.getPhoneNumber());
+        user.setPassword(dto.getPassword());
         return null;
     }
 
-//    @Override
-//    public User registerUser(User user) {
-//
-//        User existingUser = userRepository.findByEmail(user.getEmail());
-//        if(existingUser != null){
-//        throw new RuntimeException("Email already exists");
-//        }
-//        return userRepository.save(user);
-//    }
+    @Override
+    public User registerUser(User user) {
+
+        User existingUser = userRepository.findByEmail(user.getEmail());
+        if(existingUser != null){
+        throw new RuntimeException("Email already exists");
+        }
+        return userRepository.save(user);
+    }
 }
