@@ -21,21 +21,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponseDTO registerUser(UserRegistrationRequestDTO dto) {
         User user = new User();
-        user.setFirstName(dto.getFirstName());
-        user.setLastName(dto.getLastName());
-        user.setEmail(dto.getEmail());
-        user.setPhoneNumber(dto.getPhoneNumber());
-        user.setPassword(dto.getPassword());
+
+        if(userRepository.findByEmail(dto.getEmail()) != null){
+            throw new RuntimeException("User is already Exists");
+        }else{
+            user.setFirstName(dto.getFirstName());
+            user.setLastName(dto.getLastName());
+            user.setEmail(dto.getEmail());
+            user.setPhoneNumber(dto.getPhoneNumber());
+            user.setPassword(dto.getPassword());
+            user.setRole("USER");
+        }
         return null;
     }
 
-    @Override
-    public User registerUser(User user) {
 
-        User existingUser = userRepository.findByEmail(user.getEmail());
-        if(existingUser != null){
-        throw new RuntimeException("Email already exists");
-        }
-        return userRepository.save(user);
-    }
 }

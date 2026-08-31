@@ -1,5 +1,7 @@
 package com.shopsphere.backend.controller;
 
+import com.shopsphere.backend.dto.UserRegistrationRequestDTO;
+import com.shopsphere.backend.dto.UserResponseDTO;
 import com.shopsphere.backend.entity.User;
 import com.shopsphere.backend.service.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +19,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/register")
-    public User registerUser(@RequestBody User user){
-        return userService.registerUser(user);
+//    @PostMapping("/register")
+//    public User registerUser(@RequestBody User user){
+//        return userService.registerUser(user);
+//    }
+
+    public UserResponseDTO registerUser(@RequestBody UserRegistrationRequestDTO dto){
+        return userService.registerUser(dto);
     }
 }
